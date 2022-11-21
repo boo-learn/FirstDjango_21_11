@@ -18,7 +18,7 @@ items = [
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Main page")
+    return render(request, 'index.html')
 
 
 def about(request):
