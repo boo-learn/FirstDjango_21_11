@@ -13,6 +13,7 @@
     <ol>
         {% for item in items %}
             <a href="/item/{{ item.id }}">
+            <a href="{% url 'item-detail' item.id %}">
                 <li>
                     <div>{{ item.name }}</div>
                     <div>Описание товара</div>

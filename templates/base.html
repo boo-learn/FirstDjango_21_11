@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-    <a href="/"> Домой</a>/<a href="/items">Список товаров</a>/contacts/
+    <a href="{% url 'home' %}"> Домой</a>/<a href="{% url 'items-list' %}">Список товаров</a>/contacts/
 </header>
 {% block content %}
 {% endblock %}

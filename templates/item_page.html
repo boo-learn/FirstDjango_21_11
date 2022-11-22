@@ -4,5 +4,5 @@
 
     Количество: {{ item.count|default:"Товара нет на кладе" }}<br>
 
-    <a href="/items">Назад</a>
+    <a href="{% url 'items-list' %}">Назад</a>
 {% endblock %}
