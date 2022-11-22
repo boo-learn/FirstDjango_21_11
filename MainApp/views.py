@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import Http404
 from MainApp.models import Item
+from django.core.exceptions import ObjectDoesNotExist
 
 # items = [
 #     {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
@@ -17,13 +18,14 @@ def home(request):
 
 
 def page_item(request, id):
-    for item in items:
-        if item['id'] == id:
-            context = {
-                "item": item
-            }
-            return render(request, 'item_page.html', context)
-    raise Http404(f"Товар с id={id} не найден")
+    try:
+        item = Item.objects.get(id=id)
+    except ObjectDoesNotExist:
+        raise Http404(f"Товар с id={id} не найден")
+    context = {
+        "item": item
+    }
+    return render(request, 'item_page.html', context)
 
 
 def items_list(request):
